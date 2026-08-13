@@ -21,6 +21,7 @@
             <input type="text" data-modal-code maxlength="1" inputmode="numeric" aria-label="인증번호 5자리">
             <input type="text" data-modal-code maxlength="1" inputmode="numeric" aria-label="인증번호 6자리">
         </div>
+        <p class="modal__verification-guide">인증번호는 발송 후 5분 동안 유효합니다.</p>
         <p class="modal__error" data-modal-error aria-live="polite"></p>
         <button type="button" class="modal__link" data-modal-resend>인증번호 재발송</button>
 

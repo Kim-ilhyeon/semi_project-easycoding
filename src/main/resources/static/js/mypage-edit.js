@@ -2,6 +2,22 @@ const editNicknameInput = document.querySelector("#nickname");
 const editNicknameResult = document.querySelector("#check-edit-nickname-result");
 const editForm = document.querySelector("#editForm");
 
+window.addEventListener("pageshow", function (event) {
+    const navigationEntry =
+        performance.getEntriesByType("navigation")[0];
+    const isBackNavigation =
+        event.persisted || navigationEntry?.type === "back_forward";
+
+    if (isBackNavigation) {
+        const myPageUrl = new URL(editForm.action);
+        myPageUrl.pathname = myPageUrl.pathname.replace(
+            /\/edit$/,
+            "/mypage"
+        );
+        window.location.replace(myPageUrl);
+    }
+});
+
 const currentPasswordInput = document.querySelector("#currentPassword");
 const newPasswordInput = document.querySelector("#newPassword");
 const confirmPasswordInput = document.querySelector("#confirmPassword");

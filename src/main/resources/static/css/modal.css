@@ -175,6 +175,14 @@
     transition: border-color var(--transition-fast);
 }
 
+.modal__verification-guide {
+    margin: 8px 0 4px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
 .modal__link {
     margin: 0 0 16px;
     border: 0;
