@@ -28,7 +28,7 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setSubject("이지코딩 이메일 인증번호");
+        message.setSubject("쉽코딩 이메일 인증번호");
         message.setText("인증번호는 " + code + "입니다.");
 
         mailSender.send(message);
