@@ -117,9 +117,8 @@ main
 
 - [요구사항 및 WBS (Google Sheets)](https://docs.google.com/spreadsheets/d/1YktKIGsws0Yv6sRyWs9GUJuFQYRzqWM4T2NB9FS6jcI/edit?usp=sharing)
 - [UI 설계 (Figma)](https://www.figma.com/design/tKYHHUukfR1qnf4Wmuwe5z/UI?node-id=0-1&t=NuxY1oiRjEKWWICO-0)
-- 기능 명세서
-- 요구사항 정의서
-- ERD
+- [요구사항 정의서 & 기능 명세서](https://app.notion.com/p/6-ba78f40833ef8247970b81acae5c2dba)
+- [ERD](https://www.erdcloud.com/d/sKYgT3Wfw7eYWmoop)
 
 ## 회고 및 개선 방향
 
