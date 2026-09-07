@@ -1,265 +1,127 @@
-# Git 사용 가이드
+# 쉽코딩 (EasyCoding)
 
-## 1. Repository Clone (최초 1회)
+> 이동 중에도 부담 없이 개발 지식을 학습하고, 학습 기록을 통해 꾸준한 학습 습관을 만들도록 돕는 개발 학습 관리 플랫폼
 
-```bash
-git clone https://github.com/Organization/Repository.git
-```
+## 프로젝트 소개
 
-프로젝트 폴더로 이동
+**쉽코딩(EasyCoding)**은 개발 학습과 개발자 취업을 준비하는 사용자를 위한 학습 관리 플랫폼입니다.
+객관식·빈칸형 문제를 제공하여 별도의 코딩 환경이 없는 이동 중에도 학습할 수 있도록 하고, 일일 문제·오답 풀이·학습 통계·커뮤니티를 통해 학습의 시작과 지속을 지원합니다.
 
-```bash
-cd Repository
-```
+### 기획 배경
 
----
+기존 코딩 학습 서비스는 직접 코드를 작성하는 실습 중심인 경우가 많아 장소와 시간의 제약이 있습니다. 또한 처음 개발을 공부하는 사용자는 무엇부터 학습해야 할지 정하기 어렵고, 혼자 학습할 때 꾸준한 습관을 만들기 어렵다는 문제를 해결하고자 했습니다.
 
-## 2. develop 브랜치 생성 (최초 1회)
+EasyCoding은 짧은 문제 풀이를 통해 학습 진입 장벽을 낮추고, 일일 학습·오답 관리·학습 기록을 통해 지속적인 학습을 유도하는 것을 목표로 합니다.
 
-원격의 develop 브랜치를 로컬에 생성합니다.
+## 개발 기간 및 팀
 
-```bash
-git checkout -b develop origin/develop
-```
+- **개발 기간:** 2026. 07. 15. ~ 2026. 08. 14.
+- **팀명:** Be전공자
+- **인원:** 3명
 
-브랜치 확인
+| 이름 | 프로젝트 역할 | 담당 기능 |
+| --- | --- | --- |
+| 박소은 | 팀장 · 이슈/일정 관리 | 회원가입, 로그인·로그아웃, 회원정보 수정·탈퇴, 대댓글, 학습 통계 및 학습 잔디 |
+| 김일현 | 형상 관리 · 회의록 | 게시글 CRUD, 임시저장, 댓글 CRUD, 비로그인 접근 제어(Interceptor), 공통 Modal |
+| 한태우 | DB 관리 | AI 문제 생성, 문제 DB 저장, 일일 문제 조회, 채점, 오답 풀이 |
 
-```bash
-git branch
-```
+## 주요 기능
 
----
+| 영역 | 기능 |
+| --- | --- |
+| 회원 | 회원가입, 로그인·로그아웃, 회원정보 수정, 회원탈퇴 |
+| 학습 | AI 기반 문제 생성, 일일 문제 조회, 문제 풀이 및 채점, 오답 풀이 |
+| 학습 관리 | 학습 통계, 학습 잔디를 통한 학습 기록 확인 |
+| 커뮤니티 | 게시글·댓글·대댓글 CRUD, 게시글 임시저장 |
+| 공통 | Spring Interceptor 기반 비로그인 접근 제어, 공통 Modal |
 
-## 3. 새로운 기능 개발 시작
+### 향후 개선 기능
 
-반드시 develop 브랜치로 이동
+- 소셜 회원가입·로그인
+- 관리자 기능
+- 연속 학습 중단 알림
 
-```bash
-git checkout develop
-```
+## 서비스 화면
 
-원격의 develop브랜치의 최신 내용 가져오기
+> 실제 화면 캡처 파일을 `docs/images/`에 저장한 뒤 아래 경로를 연결합니다.
 
-```bash
-git pull origin develop
-```
+| 화면 | 설명 | 이미지                         |
+| --- | --- |-----------------------------|
+| 메인 / 학습 통계 | 학습 현황과 학습 잔디를 통해 기록을 확인 | `/docs/images/main.png`     |
+| 로그인 | 회원 인증 화면 | `docs/images/login.png`     |
+| 문제 풀이 | 일일 문제 조회, 답안 제출, 채점 및 오답 학습 | `docs/images/learning.png`  |
+| 커뮤니티 | 게시글과 댓글을 통한 정보 공유 | `docs/images/community.png` |
 
-Feature 브랜치 생성
+## 기술 스택
 
-```bash
-git checkout -b feature/기능명
-```
+> 아래 구성은 프로젝트 설명을 바탕으로 작성했습니다. Java·Spring Boot·MySQL 등의 **정확한 버전은 프로젝트 설정 파일과 실행 환경을 확인한 후 기입**합니다.
 
-예시
+| 구분 | 기술 |
+| --- | --- |
+| Backend | Java, Spring Boot, Spring Security, Spring Mail, Spring AI, MyBatis, Lombok, Servlet |
+| Frontend | JSP, HTML, CSS, JavaScript, Ajax, JSTL, EL |
+| Database | MySQL |
+| AI | OpenAI API |
+| Server | Embedded Tomcat |
+| Development | IntelliJ IDEA |
+| Collaboration | Git, GitHub, Figma, Notion, Slack, ERDCloud |
 
-```bash
-git checkout -b feature/login
-```
+## 프로젝트 구조
 
----
-
-## 4. 개발 진행
-
-코드 작성 후
-
-변경사항 확인
-
-```bash
-git status
-```
-> 변경사항이 빨간색 글씨로 리스트업 되어있으면 됨
-
-변경사항 전부 Stage
-
-```bash
-git add .
-```
-
-Stage에 올라갔는지 한번 더 확인
-
-```bash
-git status
-```
-> 변경사항이 초록색 으로 반영 되었으면 잘 올라간 것임.
-
-Commit
-
-```bash
-git commit -m "feat: 로그인 기능 구현"
-```
-
-최신 develop 반영
-
-```bash
-git pull origin develop
-```
-> 충돌이 발생하면 충돌을 해결한 후 다시 commit합니다.<br>
-> **(git commit -m "conflict clear")**
-
-최초 Push
-
-```bash
-git push -u origin feature/login
-```
-
-이후 Push
-
-```bash
-git push origin "로컬에서 작업한 브랜치명"
-```
-
-예시
-
-```bash
-git push origin feature/login
-```
-
----
-
-## 5. Pull Request 생성
-
-GitHub에서
-
-```
-Pull requests 메뉴 클릭
+```text
+Client (JSP / JavaScript / Ajax)
         ↓
-우측 상단에 [New pull request] 녹색 버튼 클릭
+Controller
         ↓
-작업한 브랜치 [feature/기능명] 클릭
+Service
         ↓
-왼쪽 상단에 merge하는 base브랜치를 develop으로 변경
+Mapper (MyBatis)
         ↓
-[Create pull request] 녹색 버튼 클릭
-        ↓
-충돌나는 부분 없는지 확인 / 충돌 난다면 local에서 해결 후 push까지 다시 진행
+MySQL
 ```
 
-Pull Request 생성
+> 실제 패키지 구조, DTO/VO 사용 방식 및 설정 파일 기준으로 최종 보완합니다.
 
----
+## 데이터베이스
 
-## 6. Merge(병합) 완료 후
-#### local에 develop브랜치를 원격에서 병합한 develop브랜치의 최신상태로 최신화
+학습·회원·커뮤니티 데이터를 중심으로 설계했습니다.
 
-develop 브랜치로 이동
+- 회원 및 인증 정보
+- 문제·정답·문제 풀이·오답 기록
+- 학습 기록·학습 통계
+- 게시글·댓글·대댓글·임시저장
 
-```bash
-git checkout develop
+> SQL 덤프를 기준으로 최종 테이블 목록, PK/FK 관계 및 ERD 이미지를 추가합니다.
+
+## 협업 방식
+
+### 브랜치 전략
+
+Git Flow 방식을 참고해 다음과 같이 작업했습니다.
+
+```text
+main
+└── develop
+    ├── feature/...
+    ├── fix/...
+    └── docs/...
 ```
 
-최신 내용 가져오기
+- 기능별 브랜치에서 개발 후 Pull Request를 통해 병합
+- 매일 개발 종료 전 코드 리뷰 진행
+- 형상 관리와 회의록을 분리해 협업 과정 기록
 
-```bash
-git pull origin develop
-```
+자세한 Git 사용 방법은 [GIT_USAGE.md](./GIT_USAGE.md)에서 확인할 수 있습니다.
 
-로컬에 있는 브랜치 리스트 확인
-```bash
-git branch
-```
+## 프로젝트 문서
 
-로컬 브랜치 삭제
+- [요구사항 및 WBS (Google Sheets)](https://docs.google.com/spreadsheets/d/1YktKIGsws0Yv6sRyWs9GUJuFQYRzqWM4T2NB9FS6jcI/edit?usp=sharing)
+- [UI 설계 (Figma)](https://www.figma.com/design/tKYHHUukfR1qnf4Wmuwe5z/UI?node-id=0-1&t=NuxY1oiRjEKWWICO-0)
+- [요구사항 정의서 & 기능 명세서](https://app.notion.com/p/6-ba78f40833ef8247970b81acae5c2dba)
+- [ERD](https://www.erdcloud.com/d/sKYgT3Wfw7eYWmoop)
 
-```bash
-git branch -d "삭제하려는 로컬 브랜치명"
-```
+## 회고 및 개선 방향
 
-예시
+코드 리뷰를 매일 진행하며 코드 품질과 구현 방식을 함께 점검했지만, 그만큼 개발 시간이 길어지는 경험도 했습니다. 또한 기획 단계에서 도출한 세부 기능이 많아 개발 범위가 커졌고, 코드 컨벤션과 브랜치·커밋 규칙의 사전 합의 및 숙지가 충분하지 않아 추적과 협업에 어려움이 있었습니다.
 
-```bash
-git branch -d feature/login
-```
-
-원격 브랜치는 형상관리자가 GitHub에서 **Delete branch** 버튼을 눌러 삭제합니다.
-
----
-
-# 자주 사용하는 Git 명령어
-
-## 현재 로컬 브랜치 확인
-
-```bash
-git branch
-```
-
-## 변경사항 확인
-
-```bash
-git status
-```
-
-## 브랜치 이동
-
-```bash
-git checkout 브랜치명
-```
-
-예시
-
-```bash
-git checkout develop
-```
-
-## 새로운 브랜치 생성 및 이동
-
-```bash
-git checkout -b 브랜치명
-```
-
-예시
-
-```bash
-git checkout -b feature/login
-```
-
-## 최신 내용 가져오기
-
-```bash
-git pull origin 브랜치명
-```
-
-예시
-
-```bash
-git pull origin develop
-```
-
-## 변경사항 추가
-
-```bash
-git add .
-```
-
-## Commit
-
-```bash
-git commit -m "커밋메시지"
-```
-
-## Push
-
-최초 Push
-
-```bash
-git push -u origin 브랜치명
-```
-
-이후
-
-```bash
-git push origin 브랜치명
-```
-
-## 로컬 브랜치 삭제
-
-```bash
-git branch -d 브랜치명
-```
-
-## 원격 브랜치 삭제 (형상관리자)
-
-```bash
-git push origin --delete 브랜치명
-```
-
-또는 GitHub에서 **Delete branch** 버튼 클릭
+다음 프로젝트에서는 기획 단계에서 핵심 기능과 우선순위를 더 명확히 설정하고, 코드 컨벤션·브랜치명·커밋 메시지 규칙을 시작 전에 문서화하여 팀 전체가 숙지한 뒤 개발을 진행하고자 합니다.
